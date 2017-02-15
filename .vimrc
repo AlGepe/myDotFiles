@@ -136,4 +136,3 @@ set colorcolumn=110
 highlight ColorColumn ctermbg=darkgray
 
 let g:miniBufExplForceSyntaxEnable = 1
-
