@@ -77,6 +77,8 @@ set nofoldenable
 
 " " Set >> & << to indent 4 columns
 set shiftwidth=2
+highlight BadWhitespace ctermbg=red guibg=red
+highlight BadWhitespace ctermbg=red guibg=red
 
 " " Set tab to indent 4 columns
 set tabstop=2
@@ -124,16 +126,18 @@ syntax on
 
 " ColorSchemes
 autocmd BufEnter *.java colorscheme moonshine_lowcontrast 
-autocmd BufEnter *.cpp colorscheme neodark 
-autocmd BufEnter,BufRead,BufNewFile *.cpp highlight Normal ctermfg=lightgrey
+autocmd BufEnter *.cpp source $HOME/.vim/syntax/cpp.vim "colorscheme neodark 
+autocmd BufEnter *.c source $HOME/.vim/syntax/c.vim 
+autocmd BufEnter *.tex source $HOME/.vim/syntax/tex.vim
 autocmd BufEnter *.m colorscheme tcsoft
+autocmd BufEnter .vimrc source $HOME/.vim/syntax/vim.vim "colorscheme spring
 autocmd BufEnter *.git, *.md colorscheme github
 autocmd FileType git* colorscheme github
 autocmd FileType gitcommit,mail setlocal spell textwidth=76 colorcolumn=77
-autocmd BufNewFile,BufRead,BufEnter *.py,*.pyw colorscheme molokai
+autocmd BufEnter *.py,*.pyw source $HOME/.vim/syntax/python.vim "colorscheme molokai
 
-set colorcolumn=080
-highlight ColorColumn ctermbg=darkgray
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgrey
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -181,6 +185,9 @@ highlight BadWhitespace ctermbg=red guibg=red
 " Better automcomplete python
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> 
+
+" Latex pdf live viewer
+let g:livepreview_previewer = 'evince'
 
 " NERDTreee ignore *.pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
