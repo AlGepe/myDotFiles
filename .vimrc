@@ -1,3 +1,13 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""
+"""
+"""
+""" Vundle + Plugin
+"""
+"""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " required
 filetype off                  " required
 
@@ -11,7 +21,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+" Add all your plugins here (note older versions of Vundle used Bundle instead 
+" of Plugin)
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
@@ -31,8 +42,11 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-speeddating.git'
-
-
+Plugin 'zanglg/nova.vim'
+Plugin 'albertorestifo/github.vim'
+Plugin 'airblade/vim-gitgutter' " Git change bar on the right
+"Plugin 'easymotion/vim-easymotion' " Check usefulness
+Plugin 'python-mode/python-mode' 
 
 
 
@@ -41,20 +55,16 @@ Plugin 'tpope/vim-speeddating.git'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-let python_highlight_all=1
-syntax on
-
-
-" ColorSchemes
-autocmd BufEnter *  colorscheme xterm16
-"autocmd BufEnter .vimrc  colorscheme solarized
-autocmd BufEnter *.py colorscheme molokai
-autocmd BufEnter *.c colorscheme Tomorrow-Night
-autocmd Filetype gitcommit,mail setlocal spell textwidth=76 colorcolumn=77
-
-
-
-let g:molokai_original = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""
+""" GENERAL OPTIONS
+"""
+""" 
+"""
+"""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " " Set incremental search by default
 set incsearch
@@ -95,20 +105,78 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
-" Get better folding preview
-let g:SimpylFold_docstring_preview=1
 
-" get indentation to follow PEP8 standards
-au BufNewFile, BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+set complete +=kspell
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""
+""" SYNTAX COLORING
+"""
+""" 
+"""
+"""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red 
+syntax on
+
+
+" ColorSchemes
+autocmd BufEnter *.java colorscheme moonshine_lowcontrast 
+autocmd BufEnter *.cpp colorscheme neodark 
+autocmd BufEnter,BufRead,BufNewFile *.cpp highlight Normal ctermfg=lightgrey
+autocmd BufEnter *.m colorscheme tcsoft
+autocmd BufEnter *.git, *.md colorscheme github
+autocmd FileType git* colorscheme github
+autocmd FileType gitcommit,mail setlocal spell textwidth=76 colorcolumn=77
+autocmd BufNewFile,BufRead,BufEnter *.py,*.pyw colorscheme molokai
+
+set colorcolumn=080
+highlight ColorColumn ctermbg=darkgray
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""
+""" EXTRA CONFIG FILE DEPENDANT
+"""
+""" 
+"""
+"""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"au BufRead,BufNewFile *.py 
+      "\ set tabstop=4
+      "\ set softtabstop=4
+      "\ set shiftwidth=4
+      "\ set textwidth=79
+      "\ set expandtab
+      "\ set autoindent 
+
+
+autocmd BufRead,BufNewFile *.md setlocal spell
+
+" Better Java syntax highlighting
+autocmd! FileType java call CSyntaxAfter() 
 
 " Flagging Unnecessary Whitespace
+highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.java,*.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+highlight BadWhitespace ctermbg=red guibg=red
+"au BufEnter,BufNewFile *.py source .vim/syntax/pep.vim
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""
+""" CONFIG FOR PLUGINS
+"""
+""" 
+"""
+"""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Better automcomplete python
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -117,13 +185,12 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " NERDTreee ignore *.pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 noremap <C-N> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 autocmd! BufWritePost  ~/.vimrc nested :source ~/.vimrc
 
-autocmd BufRead,BufNewFile *.md setlocal spell
-
-
-set complete +=kspell
+" Get better folding preview
+let g:SimpylFold_docstring_preview=1
 
 " Settings for multi-cursor
 let g:multi_cursor_use_default_mapping=0
@@ -132,7 +199,5 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-set colorcolumn=110
-highlight ColorColumn ctermbg=darkgray
 
-let g:miniBufExplForceSyntaxEnable = 1
+
