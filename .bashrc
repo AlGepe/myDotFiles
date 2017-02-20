@@ -120,7 +120,7 @@ source ~/root/bin/thisroot.sh
 alias lr='ls -Falrth'
 alias :x='exit'
 alias root='root -l'
-alias drobos='cd /media/algepe/F40E89650E89222A/Users/Al\ Gepe/Dropbox/'
+alias drobos='cd $HOME/WindowsDrive/Users/Al\ Gepe/Dropbox/'
 
 # Powerline
 powerline-daemon -q
