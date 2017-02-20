@@ -47,8 +47,8 @@ Plugin 'albertorestifo/github.vim'
 Plugin 'airblade/vim-gitgutter' " Git change bar on the right
 "Plugin 'easymotion/vim-easymotion' " Check usefulness
 Plugin 'python-mode/python-mode' 
-
-
+Plugin 'dracula/vim'
+Plugin 'lervag/vimtex'
 
 
 " All of your Plugins must be added before the following line
@@ -207,4 +207,5 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 
+set term=xterm-256color
 
