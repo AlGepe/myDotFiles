@@ -115,16 +115,29 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-source ~/root/bin/thisroot.sh
-
-alias lr='ls -Falrth'
-alias :x='exit'
-alias root='root -l'
-alias drobos='cd $HOME/WindowsDrive/Users/Al\ Gepe/Dropbox/'
-
 # Powerline
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /usr/share/powerline/bindings/bash/powerline.sh
 
+source ~/root/bin/thisroot.sh
+
+## All Aliases
+	# Folders
+alias lr='ls -Falrth'
+alias lc='ls -1'
+	# simple commands
+alias :x='exit'
+	# So ROOT doest lag on start
+alias root='root -l'
+	# easier dropbox [when shared with Windoze] -outdated-
+#alias drobos='cd $HOME/WindowsDrive/Users/Al\ Gepe/Dropbox/'
+
+	# Loading tensorflow (virtualenv CPU)
+alias tensorflow='source ~/tensorflow/bin/activate'
+	# Matlab 'executable'
+alias matlab='/usr/local/MATLAB/R2017a/bin/matlab'
+
+# Add my own custom commands
+export PATH=$PATH":$HOME/CustomOS/myBashCommands"

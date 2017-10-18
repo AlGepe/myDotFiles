@@ -49,6 +49,7 @@ Plugin 'airblade/vim-gitgutter' " Git change bar on the right
 Plugin 'python-mode/python-mode' 
 Plugin 'dracula/vim'
 Plugin 'lervag/vimtex'
+Plugin 'flazz/vim-colorschemes'
 
 
 " All of your Plugins must be added before the following line
