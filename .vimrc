@@ -25,31 +25,33 @@ Plugin 'gmarik/Vundle.vim'
 " of Plugin)
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'vimwiki/vimwiki'
-"Plugin 'tpope/vim-endwise' " Make endings in many languages
+Plugin 'Valloric/YouCompleteMe' " Autocompletion for C-like languages and more
+Plugin 'scrooloose/syntastic' "Syntax checking for multiple Languages (gotta learn more)
+" Flake8 becomes redundant w/ syntastic
+"Plugin 'nvie/vim-flake8' "syntax and style checker for python pep8+pyflakes
+Plugin 'scrooloose/nerdtree' "Folder navigator on Ctrl+N
+Plugin 'jistr/vim-nerdtree-tabs' " This plugin aims at making NERDTree feel like a true panel, independent of tabs.
+Plugin 'kien/ctrlp.vim' "Mega incr-searcher syswide almighty (I always forget)
+Plugin 'tpope/vim-fugitive' " Gcommit and similar commands withing vim, sugoi!
+Plugin 'Lokaltog/powerline',{'rtp': 'powerline/bindings/vim/'} "cool bottombar
+Plugin 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
+" Reason https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db 
+Plugin 'vimwiki/vimwiki' "Awesome personal notebook
+"Plugin 'tpope/vim-endwise' " Make endings  for structures in many languages
 "Plugin 'ConradIrwin/vim-bracketed-paste' " Auto set paste
 "Plugin 'edsono/vim-matchit' " Broken
-"Bundle 'thoughtbot/vim-magictags'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-speeddating.git'
-Plugin 'zanglg/nova.vim'
-Plugin 'albertorestifo/github.vim'
-Plugin 'airblade/vim-gitgutter' " Git change bar on the right
-"Plugin 'easymotion/vim-easymotion' " Check usefulness
-Plugin 'python-mode/python-mode' 
-Plugin 'dracula/vim'
-Plugin 'lervag/vimtex'
-Plugin 'flazz/vim-colorschemes'
+"Bundle 'thoughtbot/vim-magictags' Autocreate ctags for git projects (has "problems)
+Plugin 'altercation/vim-colors-solarized' "Colorscheme
+"Plugin 'tpope/vim-surround' " To change surrounders (quotes, brakets...) fast
+Plugin 'tpope/vim-speeddating.git' " Ctrl+A/X also changes dates properly
+Plugin 'zanglg/nova.vim' "colorscheme
+Plugin 'albertorestifo/github.vim' "colorscheme
+Plugin 'airblade/vim-gitgutter' " Git change bar on the Left
+Plugin 'easymotion/vim-easymotion' " Check usefulness visual movements
+Plugin 'python-mode/python-mode' " Proper IDE tools (run, break-p...)
+Plugin 'dracula/vim' " Colorscheme
+Plugin 'lervag/vimtex' " Colorscheme
+Plugin 'flazz/vim-colorschemes' " Colorscheme
 
 
 " All of your Plugins must be added before the following line
@@ -70,8 +72,11 @@ filetype plugin indent on    " required
 " " Set incremental search by default
 set incsearch
 
-" " Display line number on the right by default
+" " Display line number on the left by default
 set relativenumber
+
+" " set current line absolute number
+set number
 
 " " Unfold all text when opening
 set nofoldenable
@@ -90,12 +95,10 @@ set shiftround
 " " align the new line indent with the previous line
 set autoindent    
 
-" " set current line absolute number
-set number
-
+" Set status bar to see all infos (useful with powerline)
 set laststatus=2
 
-"split navigations
+" split navigations (Navigate between splits is Ctrl+normal nav)
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -195,6 +198,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 noremap <C-N> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
+" Re-source .vimrc after saving vimrc
 autocmd! BufWritePost  ~/.vimrc nested :source ~/.vimrc
 
 " Get better folding preview
@@ -202,7 +206,8 @@ let g:SimpylFold_docstring_preview=1
 
 " Settings for multi-cursor
 let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-m>' "Default==<C-n> changed to avoid interference with NERDTree
+let g:multi_cursor_next_key='<C-m>' 
+"Default==<C-n> changed to avoid interference with NERDTree
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
