@@ -215,3 +215,5 @@ let g:multi_cursor_quit_key='<Esc>'
 
 set term=xterm-256color
 
+" Custom command for right encryption options (no compatible)
+:command EncryptionMode set cm=blowfish2|set viminfo=|set nobackup|set nowritebackup
