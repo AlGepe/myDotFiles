@@ -98,6 +98,9 @@ set autoindent
 " Set status bar to see all infos (useful with powerline)
 set laststatus=2
 
+" Set spell-checker language to EN-UK
+set spelllang=en_gb
+
 " split navigations (Navigate between splits is Ctrl+normal nav)
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -134,6 +137,7 @@ autocmd BufEnter *.cpp source $HOME/.vim/syntax/cpp.vim "colorscheme neodark
 autocmd BufEnter *.c source $HOME/.vim/syntax/c.vim 
 autocmd BufEnter *.tex source $HOME/.vim/syntax/tex.vim
 autocmd BufEnter *.m colorscheme tcsoft
+autocmd BufEnter *.wiki set spell
 autocmd BufEnter .vimrc source $HOME/.vim/syntax/vim.vim "colorscheme spring
 autocmd BufEnter *.git, *.md colorscheme github
 autocmd FileType git* colorscheme github
@@ -185,6 +189,9 @@ highlight BadWhitespace ctermbg=red guibg=red
 """
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable folding on vimwiki
+let g:vimwiki_folding='list'
 
 " Better automcomplete python
 let g:ycm_autoclose_preview_window_after_completion=1

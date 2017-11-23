@@ -131,13 +131,19 @@ alias lc='ls -1'
 alias :x='exit'
 	# So ROOT doest lag on start
 alias root='root -l'
-	# easier dropbox [when shared with Windoze] -outdated-
+
+# easier dropbox [when shared with Windoze] -outdated-
 #alias drobos='cd $HOME/WindowsDrive/Users/Al\ Gepe/Dropbox/'
 
-	# Loading tensorflow (virtualenv CPU)
+# Loading tensorflow (virtualenv CPU)
 alias tensorflow='source ~/tensorflow/bin/activate'
-	# Matlab 'executable'
+
+# Matlab 'executable'
 alias matlab='/usr/local/MATLAB/R2017a/bin/matlab'
 
 # Add my own custom commands
 export PATH=$PATH":$HOME/CustomOS/myBashCommands"
+alias workdir='cd /home/algepe/CodeStuff/Academic/TensorFlow_TriggerML/Learning_TF_NN/CodePy'
+
+# added by Anaconda3 installer
+export PATH="/home/algepe/anaconda3/bin:$PATH"
