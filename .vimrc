@@ -195,6 +195,7 @@ let g:vimwiki_folding='list'
 
 " Better automcomplete python
 let g:ycm_autoclose_preview_window_after_completion=1
+set encoding=utf-8 "YCM compatibility
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> 
 
 " Latex pdf live viewer
