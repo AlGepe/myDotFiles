@@ -14,7 +14,6 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -137,7 +136,7 @@ autocmd BufEnter *.cpp source $HOME/.vim/syntax/cpp.vim "colorscheme neodark
 autocmd BufEnter *.c source $HOME/.vim/syntax/c.vim 
 autocmd BufEnter *.tex source $HOME/.vim/syntax/tex.vim
 autocmd BufEnter *.m colorscheme tcsoft
-autocmd BufEnter *.wiki set spell
+autocmd BufEnter *.wiki source $HOME/.vim/syntax/wiki.vim
 autocmd BufEnter .vimrc source $HOME/.vim/syntax/vim.vim "colorscheme spring
 autocmd BufEnter *.git, *.md colorscheme github
 autocmd FileType git* colorscheme github
@@ -195,7 +194,6 @@ let g:vimwiki_folding='list'
 
 " Better automcomplete python
 let g:ycm_autoclose_preview_window_after_completion=1
-set encoding=utf-8 "YCM compatibility
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR> 
 
 " Latex pdf live viewer

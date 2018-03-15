@@ -143,7 +143,9 @@ alias matlab='/usr/local/MATLAB/R2017a/bin/matlab'
 
 # Add my own custom commands
 export PATH=$PATH":$HOME/CustomOS/myBashCommands"
-alias workdir='cd /home/algepe/CodeStuff/Academic/TensorFlow_TriggerML/Learning_TF_NN/CodePy'
+alias workdir='cd /home/algepe/CodeStuff/Academic/TriggerML/CMS_Data/28_04_2017/SingleMu_10_m/ '
+alias studies='cd /home/algepe/Dropbox/Studies/Master_UW/'
 
 # added by Anaconda3 installer
 export PATH="/home/algepe/anaconda3/bin:$PATH"
+
