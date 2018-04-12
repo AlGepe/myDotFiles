@@ -144,7 +144,7 @@ alias matlab='/usr/local/MATLAB/R2017a/bin/matlab'
 # Add my own custom commands
 export PATH=$PATH":$HOME/CustomOS/myBashCommands"
 # Alias for usual commands
-alias workdir='cd /home/algepe/CodeStuff/Academic/TriggerML/CMS_Data/28_04_2017/SingleMu_10_m/ '
+alias workdir='cd /home/algepe/Dropbox/Studies/Master_UW/OMTF/Trigger_ML/CMS_Data/28_04_2017/SingleMu_10_m'
 alias studies='cd /home/algepe/Dropbox/Studies/Master_UW/'
 alias ryzen='ssh -XY 2.154.25.247'
 alias tmus='tmux new-session -s'
