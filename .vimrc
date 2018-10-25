@@ -22,18 +22,18 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead 
 " of Plugin)
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe' " Autocompletion for C-like languages and more
-Plugin 'scrooloose/syntastic' "Syntax checking for multiple Languages (gotta learn more)
+"Plugin 'tmhedberg/SimpylFold'
+"Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'Valloric/YouCompleteMe' " Autocompletion for C-like languages and more
+"Plugin 'scrooloose/syntastic' "Syntax checking for multiple Languages (gotta learn more)
 " Flake8 becomes redundant w/ syntastic
 "Plugin 'nvie/vim-flake8' "syntax and style checker for python pep8+pyflakes
 Plugin 'scrooloose/nerdtree' "Folder navigator on Ctrl+N
 Plugin 'jistr/vim-nerdtree-tabs' " This plugin aims at making NERDTree feel like a true panel, independent of tabs.
-Plugin 'kien/ctrlp.vim' "Mega incr-searcher syswide almighty (I always forget)
+"Plugin 'kien/ctrlp.vim' "Mega incr-searcher syswide almighty (I always forget)
 Plugin 'tpope/vim-fugitive' " Gcommit and similar commands withing vim, sugoi!
 Plugin 'Lokaltog/powerline',{'rtp': 'powerline/bindings/vim/'} "cool bottombar
-Plugin 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
+"Plugin 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
 " Reason https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db 
 Plugin 'vimwiki/vimwiki' "Awesome personal notebook
 "Plugin 'tpope/vim-endwise' " Make endings  for structures in many languages
@@ -42,12 +42,12 @@ Plugin 'vimwiki/vimwiki' "Awesome personal notebook
 "Bundle 'thoughtbot/vim-magictags' Autocreate ctags for git projects (has "problems)
 Plugin 'altercation/vim-colors-solarized' "Colorscheme
 "Plugin 'tpope/vim-surround' " To change surrounders (quotes, brakets...) fast
-Plugin 'tpope/vim-speeddating.git' " Ctrl+A/X also changes dates properly
+"Plugin 'tpope/vim-speeddating.git' " Ctrl+A/X also changes dates properly
 Plugin 'zanglg/nova.vim' "colorscheme
 Plugin 'albertorestifo/github.vim' "colorscheme
 Plugin 'airblade/vim-gitgutter' " Git change bar on the Left
-Plugin 'easymotion/vim-easymotion' " Check usefulness visual movements
-Plugin 'python-mode/python-mode' " Proper IDE tools (run, break-p...)
+"Plugin 'easymotion/vim-easymotion' " Check usefulness (visual movements)
+"Plugin 'python-mode/python-mode' " Proper IDE tools (run, break-p...)
 Plugin 'dracula/vim' " Colorscheme
 Plugin 'lervag/vimtex' " Colorscheme
 Plugin 'flazz/vim-colorschemes' " Colorscheme
@@ -222,4 +222,4 @@ let g:multi_cursor_quit_key='<Esc>'
 set term=xterm-256color
 
 " Custom command for right encryption options (no compatible)
-:command EncryptionMode set cm=blowfish2|set viminfo=|set nobackup|set nowritebackup
+":command EncryptionMode set cm=blowfish2|set viminfo=|set nobackup|set nowritebackup
