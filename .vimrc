@@ -51,6 +51,8 @@ Plugin 'airblade/vim-gitgutter' " Git change bar on the Left
 Plugin 'dracula/vim' " Colorscheme
 Plugin 'lervag/vimtex' " Colorscheme
 Plugin 'flazz/vim-colorschemes' " Colorscheme
+Bundle 'gabrielelana/vim-markdown'
+
 
 
 " All of your Plugins must be added before the following line
