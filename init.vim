@@ -3,90 +3,74 @@
 """
 """
 """
-""" Vundle + Plugin
+""" Vundle + Plug
 """
 """
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " required
-filetype off                  " required
+filetype on
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+" set the runtime path to initialize vimplug
+call plug#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead 
-" of Plugin)
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe' " Autocompletion for C-like languages and more
-Plugin 'scrooloose/syntastic' "Syntax checking for multiple Languages (gotta learn more)
-" Flake8 becomes redundant w/ syntastic
-"Plugin 'nvie/vim-flake8' "syntax and style checker for python pep8+pyflakes
-Plugin 'scrooloose/nerdtree' "Folder navigator on Ctrl+N
-Plugin 'jistr/vim-nerdtree-tabs' " This plugin aims at making NERDTree feel like a true panel, independent of tabs.
-Plugin 'kien/ctrlp.vim' "Mega incr-searcher syswide almighty (I always forget)
-Plugin 'tpope/vim-fugitive' " Gcommit and similar commands withing vim, sugoi!
-Plugin 'Lokaltog/powerline',{'rtp': 'powerline/bindings/vim/'} "cool bottombar
-Plugin 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
+Plug 'tmhedberg/SimpylFold' " Folding code paragraphs
+Plug 'vim-scripts/indentpython.vim', {'for': 'python'} " PEP 8
+" Plug 'Valloric/YouCompleteMe', {'for': 'c'} " Autocompletion for C-like languages and more
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "Folder navigator on Ctrl+N
+Plug 'jistr/vim-nerdtree-tabs', { 'on':  'NERDTreeToggle' } " This plugin aims at making NERDTree feel like a true panel, independent of tabs.
+" Plug 'kien/ctrlp.vim' "Mega incr-searcher syswide almighty (I always forget)
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive' " Gcommit and similar commands withing vim, sugoi!
+Plug 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
 " Reason https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db 
-Plugin 'vimwiki/vimwiki' "Awesome personal notebook
-"Plugin 'tpope/vim-endwise' " Make endings  for structures in many languages
-"Plugin 'ConradIrwin/vim-bracketed-paste' " Auto set paste
-"Plugin 'edsono/vim-matchit' " Broken
-"Bundle 'thoughtbot/vim-magictags' Autocreate ctags for git projects (has "problems)
-Plugin 'altercation/vim-colors-solarized' "Colorscheme
-"Plugin 'tpope/vim-surround' " To change surrounders (quotes, brakets...) fast
-Plugin 'tpope/vim-speeddating.git' " Ctrl+A/X also changes dates properly
-Plugin 'zanglg/nova.vim' "colorscheme
-Plugin 'albertorestifo/github.vim' "colorscheme
-Plugin 'airblade/vim-gitgutter' " Git change bar on the Left
-Plugin 'easymotion/vim-easymotion' " Check usefulness visual movements
-Plugin 'python-mode/python-mode' " Proper IDE tools (run, break-p...)
-Plugin 'dracula/vim' " Colorscheme
-Plugin 'lervag/vimtex' " Colorscheme
-Plugin 'flazz/vim-colorschemes' " Colorscheme
+Plug 'vimwiki/vimwiki', {'for':'wiki'} "Awesome personal notebook
+"Plug 'tpope/vim-endwise' " Make endings  for structures in many languages
+"Plug 'ConradIrwin/vim-bracketed-paste' " Auto set paste
+Plug 'altercation/vim-colors-solarized' "Colorscheme
+Plug 'tpope/vim-speeddating.git' " Ctrl+A/X also changes dates properly
+Plug 'zanglg/nova.vim' "colorscheme
+Plug 'albertorestifo/github.vim' "colorscheme
+Plug 'airblade/vim-gitgutter' " Git change bar on the Left
+Plug 'easymotion/vim-easymotion' " Check usefulness visual movements
+Plug 'python-mode/python-mode' " Proper IDE tools (run, break-p...)
+Plug 'dracula/vim' " Colorscheme
+Plug 'lervag/vimtex' " Colorscheme
+Plug 'flazz/vim-colorschemes' " Colorscheme
+Plug 'thaerkh/vim-indentguides' "Indent guides
 
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" All of your Plugs must be added before the following line
+call plug#end()            " required
 filetype plugin indent on    " required
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""                        GENERAL OPTIONS
+"""                        GLOBAL NVIM OPTIONS
 """
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" " Set incremental search by default
 set incsearch
-
-" " Display line number on the left by default
-set relativenumber
-
-" " set current line absolute number
-set number
+" Set global number for current line and relative for the rest
+set relativenumber number
 
 " " Unfold all text when opening
 set nofoldenable
 
-" " Set >> & << to indent 4 columns
-set shiftwidth=2
+" " Set tab, >> & << to indent 4 columns as spaces
+set tabstop=4 shiftwidth=4 expandtab
 highlight BadWhitespace ctermbg=red guibg=red
 highlight BadWhitespace ctermbg=red guibg=red
-
-" " Set tab to indent 4 columns
-set tabstop=2
 
 " " round indent to multiple of 'shiftwidth'
 set shiftround
 
 " " align the new line indent with the previous line
-set autoindent    
+set autoindent
 
 " Set status bar to see all infos (useful with powerline)
 set laststatus=2
@@ -101,8 +85,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Enable folding
-set foldmethod=indent
-set foldlevel=99
+set foldmethod=indent foldlevel=99
 
 " Enable folding with the spacebar
 nnoremap <space> za
@@ -119,17 +102,17 @@ syntax on
 
 
 " ColorSchemes
-autocmd BufEnter *.java colorscheme moonshine_lowcontrast 
-autocmd BufEnter *.cpp source $HOME/.vim/syntax/cpp.vim "colorscheme neodark 
-autocmd BufEnter *.c source $HOME/.vim/syntax/c.vim 
-autocmd BufEnter *.tex source $HOME/.vim/syntax/tex.vim
+autocmd BufEnter *.java colorscheme moonshine_lowcontrast
+autocmd BufEnter *.cpp source $VIMRUNTIME/syntax/cpp.vim "colorscheme neodark
+autocmd BufEnter *.c source $VIMRUNTIME/syntax/c.vim
+autocmd BufEnter *.tex source $VIMRUNTIME/syntax/tex.vim
 autocmd BufEnter *.m colorscheme tcsoft
-autocmd BufEnter *.wiki source $HOME/.vim/syntax/wiki.vim
-autocmd BufEnter .vimrc source $HOME/.vim/syntax/vim.vim "colorscheme spring
+autocmd BufEnter *.wiki source $VIMRUNTIME/syntax/wiki.vim
+autocmd BufEnter init.vim source $VIMRUNTIME/syntax/vim.vim "colorscheme spring
 autocmd BufEnter *.git, *.md colorscheme github
 autocmd FileType git* colorscheme github
 autocmd FileType gitcommit,mail setlocal spell textwidth=76 colorcolumn=77
-autocmd BufEnter *.py,*.pyw source $HOME/.vim/syntax/python.vim "colorscheme molokai
+autocmd BufEnter *.py,*.pyw source $VIMRUNTIME/syntax/python.vim "colorscheme molokai
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=darkgrey
@@ -167,6 +150,8 @@ highlight BadWhitespace ctermbg=red guibg=red
 """
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" FZF +ripgrep
+let $FZF_DEFAULT_COMMAND='rg --files'
 " Enable folding on vimwiki
 let g:vimwiki_folding='list'
 
@@ -196,8 +181,12 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+" Configs
+let g:indentguides_spacechar = '┆'
+let g:indentguides_tabchar = '|'
 
-set term=xterm-256color
+
+"set term=xterm-256color
 
 " Custom command for right encryption options (no compatible)
-:command EncryptionMode set cm=blowfish2|set viminfo=|set nobackup|set nowritebackup
+":command EncryptionMode set cm=blowfish2|set viminfo=|set nobackup|set nowritebackup

@@ -121,39 +121,23 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /usr/share/powerline/bindings/bash/powerline.sh
 
-source ~/root/bin/thisroot.sh
-
 ## All Aliases
 	# Folders
 alias lr='ls -Falrth'
 alias lc='ls -1'
 	# simple commands
 alias :x='exit'
-	# So ROOT doest lag on start
-alias root='root -l'
-
-# easier dropbox [when shared with Windoze] -outdated-
-#alias drobos='cd $HOME/WindowsDrive/Users/Al\ Gepe/Dropbox/'
 
 # Loading tensorflow (virtualenv CPU)
-alias tensorflow='source ~/tensorflow/bin/activate'
-
-# Matlab 'executable'
-alias matlab='/usr/local/MATLAB/R2017a/bin/matlab'
+alias tensorflow='source ~/venv/bin/activate'
 
 # Add my own custom commands
 export PATH=$PATH":$HOME/CustomOS/myBashCommands"
+
 # Alias for usual commands
-alias workdir='cd /home/algepe/Dropbox/Studies/Master_UW/OMTF/Trigger_ML/CMS_Data/28_04_2017/SingleMu_10_m'
-alias studies='cd /home/algepe/Dropbox/Studies/Master_UW/'
 alias ryzen='ssh -XY 2.154.25.247'
 alias tmus='tmux new-session -s'
 alias tmut='tmux attach -t'
 
-# added by Anaconda3 installer
-export PATH="/home/algepe/anaconda3/bin:$PATH"
-export ROOTSYS=/home/algepe/root
-export PATH=$ROOTSYS/bin:$PATH
-export LD_LIBRARY_PATH=$ROOTSYS/lib:$LD_LIBRARY_PATH
 
 alias arnold='ssh gpardo@arnold.mimuw.edu.pl'
