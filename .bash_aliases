@@ -20,3 +20,4 @@ alias tmut='tmux attach -t'
 
 # Open fzf found file in nvim
 alias vimf='vim -o `fzf`'
+alias fprev='fzf --preview "bat --style=numbers --color=always {}"'

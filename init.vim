@@ -1,5 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """
 """
 """
@@ -21,17 +20,16 @@ Plug 'tmhedberg/SimpylFold' " Folding code paragraphs
 Plug 'vim-scripts/indentpython.vim', {'for': 'python'} " PEP 8
 " Plug 'Valloric/YouCompleteMe', {'for': 'c'} " Autocompletion for C-like languages and more
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "Folder navigator on Ctrl+N
 Plug 'jistr/vim-nerdtree-tabs', { 'on':  'NERDTreeToggle' } " This plugin aims at making NERDTree feel like a true panel, independent of tabs.
-" Plug 'kien/ctrlp.vim' "Mega incr-searcher syswide almighty (I always forget)
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-fugitive' " Gcommit and similar commands withing vim, sugoi!
-Plug 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
+"Plug 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
 " Reason https://medium.com/@schtoeffel/you-don-t-need-more-than-one-cursor-in-vim-2c44117d51db 
 Plug 'vimwiki/vimwiki', {'for':'wiki'} "Awesome personal notebook
-"Plug 'tpope/vim-endwise' " Make endings  for structures in many languages
-"Plug 'ConradIrwin/vim-bracketed-paste' " Auto set paste
 Plug 'altercation/vim-colors-solarized' "Colorscheme
 Plug 'tpope/vim-speeddating.git' " Ctrl+A/X also changes dates properly
 Plug 'zanglg/nova.vim' "colorscheme
@@ -43,6 +41,22 @@ Plug 'dracula/vim' " Colorscheme
 Plug 'lervag/vimtex' " Colorscheme
 Plug 'flazz/vim-colorschemes' " Colorscheme
 Plug 'thaerkh/vim-indentguides' "Indent guides
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+" nOTE: you need to install completion sources to get completions. Check our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tern'
+Plug 'ncm2/ncm2-pyclang'
+Plug 'ncm2/ncm2-jedi'
+Plug 'wellle/tmux-complete.vim'
+" Snipet integration
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'SirVer/ultisnips'
+"Plug 'junegunn/limelight.vim' " To be explored
+"Plug 'lifepillar/vim-mucomplete' " To be compared with ncm2
+"Plug 'plytophogy/vim-virtualenv' " Do I need it?
+Plug 'dense-analysis/ale' "Linting
 
 
 " All of your Plugs must be added before the following line
@@ -185,7 +199,28 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:indentguides_spacechar = '┆'
 let g:indentguides_tabchar = '|'
 
+" Disable syntax highlighting on inactive windows
+let g:diminactive_use_syntax = 1
+let g:diminactive_use_colorcolumn = 0
+let g:diminactive_enable_focus = 1
 
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" important: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" Configuration for Ultisnips
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+" c-j c-k for moving in snippet
+let g:UltiSnipsExpandTrigger            = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger       = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger      = "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+
+let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#left_alt_sep = ')'
 "set term=xterm-256color
 
 " Custom command for right encryption options (no compatible)
