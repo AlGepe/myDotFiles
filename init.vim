@@ -25,6 +25,8 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "Folder navigator on Ctr
 Plug 'jistr/vim-nerdtree-tabs', { 'on':  'NERDTreeToggle' } " This plugin aims at making NERDTree feel like a true panel, independent of tabs.
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'matze/vim-tex-fold'
+Plug 'Konfekt/FastFold'
 Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-fugitive' " Gcommit and similar commands withing vim, sugoi!
 "Plug 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
@@ -68,6 +70,8 @@ filetype plugin indent on    " required
 """
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>
 set incsearch
 " Set global number for current line and relative for the rest
 set relativenumber number
@@ -75,8 +79,11 @@ set relativenumber number
 " " Unfold all text when opening
 set nofoldenable
 
-" " Set tab, >> & << to indent 4 columns as spaces
-set tabstop=4 shiftwidth=4 expandtab
+" " Set tab, >> & << to indent 2 columns as spaces
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 highlight BadWhitespace ctermbg=red guibg=red
 highlight BadWhitespace ctermbg=red guibg=red
 
@@ -93,6 +100,8 @@ set laststatus=2
 set spelllang=en_gb
 
 " split navigations (Navigate between splits is Ctrl+normal nav)
+nnoremap <C-y> 3<C-y>
+nnoremap <C-e> 3<C-e>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
