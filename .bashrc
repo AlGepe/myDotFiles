@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -115,29 +115,13 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+# fzf using ripgrep
+export FZF_DEFAULT_COMMAND='rg --files'
 # Powerline
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . /usr/share/powerline/bindings/bash/powerline.sh
 
-## All Aliases
-	# Folders
-alias lr='ls -Falrth'
-alias lc='ls -1'
-	# simple commands
-alias :x='exit'
-
-# Loading tensorflow (virtualenv CPU)
-alias tensorflow='source ~/venv/bin/activate'
-
-# Add my own custom commands
-export PATH=$PATH":$HOME/CustomOS/myBashCommands"
-
-# Alias for usual commands
-alias ryzen='ssh -XY 2.154.25.247'
-alias tmus='tmux new-session -s'
-alias tmut='tmux attach -t'
-
-
-alias arnold='ssh gpardo@arnold.mimuw.edu.pl'
+set guifont=DejaVu\ Sans:s12
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
