@@ -1,9 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """
-"""
-"""
 """ Vundle + Plug
-"""
 """
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -16,17 +13,18 @@ endif
 " set the runtime path to initialize vimplug
 call plug#begin()
 
-Plug 'tmhedberg/SimpylFold' " Folding code paragraphs
+Plug 'pangloss/vim-javascript' " JS highlight and stuffs
 Plug 'vim-scripts/indentpython.vim', {'for': 'python'} " PEP 8
 " Plug 'Valloric/YouCompleteMe', {'for': 'c'} " Autocompletion for C-like languages and more
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } "Folder navigator on Ctrl+N
 Plug 'jistr/vim-nerdtree-tabs', { 'on':  'NERDTreeToggle' } " This plugin aims at making NERDTree feel like a true panel, independent of tabs.
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'matze/vim-tex-fold'
-Plug 'Konfekt/FastFold'
+              Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+              Plug 'junegunn/fzf.vim'
+              Plug 'tmhedberg/SimpylFold' " Folding code paragraphs
+              Plug 'matze/vim-tex-fold'
+              Plug 'Konfekt/FastFold'
 Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-fugitive' " Gcommit and similar commands withing vim, sugoi!
 "Plug 'terryma/vim-multiple-cursors' " self-explanatory might be useless 
@@ -37,28 +35,28 @@ Plug 'tpope/vim-speeddating.git' " Ctrl+A/X also changes dates properly
 Plug 'zanglg/nova.vim' "colorscheme
 Plug 'albertorestifo/github.vim' "colorscheme
 Plug 'airblade/vim-gitgutter' " Git change bar on the Left
-Plug 'easymotion/vim-easymotion' " Check usefulness visual movements
-Plug 'python-mode/python-mode' " Proper IDE tools (run, break-p...)
+              Plug 'easymotion/vim-easymotion' " Check usefulness visual movements
+              Plug 'python-mode/python-mode' " Proper IDE tools (run, break-p...)
 Plug 'dracula/vim' " Colorscheme
 Plug 'lervag/vimtex' " Colorscheme
 Plug 'flazz/vim-colorschemes' " Colorscheme
 Plug 'thaerkh/vim-indentguides' "Indent guides
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-" nOTE: you need to install completion sources to get completions. Check our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-tern'
-Plug 'ncm2/ncm2-pyclang'
-Plug 'ncm2/ncm2-jedi'
-Plug 'wellle/tmux-complete.vim'
-" Snipet integration
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'SirVer/ultisnips'
-"Plug 'junegunn/limelight.vim' " To be explored
-"Plug 'lifepillar/vim-mucomplete' " To be compared with ncm2
-"Plug 'plytophogy/vim-virtualenv' " Do I need it?
-Plug 'dense-analysis/ale' "Linting
+              Plug 'ncm2/ncm2'
+              Plug 'roxma/nvim-yarp'
+              " nOTE: you need to install completion sources to get completions. Check our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+              Plug 'ncm2/ncm2-bufword'
+              Plug 'ncm2/ncm2-path'
+              Plug 'ncm2/ncm2-tern'
+              Plug 'ncm2/ncm2-pyclang'
+              Plug 'ncm2/ncm2-jedi'
+              Plug 'wellle/tmux-complete.vim'
+              " Snipet integration
+              Plug 'ncm2/ncm2-ultisnips'
+              Plug 'SirVer/ultisnips'
+              "Plug 'junegunn/limelight.vim' " To be explored
+              "Plug 'lifepillar/vim-mucomplete' " To be compared with ncm2
+              "Plug 'plytophogy/vim-virtualenv' " Do I need it?
+              Plug 'dense-analysis/ale' "Linting
 
 
 " All of your Plugs must be added before the following line
@@ -106,6 +104,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" *-like behaviour for single characters
+:nnoremap <leader>z xhp/<C-R>-<CR>
 
 "Enable folding
 set foldmethod=indent foldlevel=99
@@ -234,3 +235,9 @@ let g:airline_powerline_fonts = 1
 
 " Custom command for right encryption options (no compatible)
 ":command EncryptionMode set cm=blowfish2|set viminfo=|set nobackup|set nowritebackup
+ 
+" Configuration for js highlighting (vim-javascript)
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+  augroup END

@@ -12,7 +12,7 @@ fi
 
 ## All my Aliases
 # Folder views
-alias lr='ls -Falrth'
+alias lr='ls -Alrthc --color=auto'
 alias lc='ls -1'
 
 # Ala vim commands
@@ -25,7 +25,7 @@ alias tensorflow='source ~/venv/bin/activate'
 export PATH=$PATH":$HOME/CustomOS/myBashCommands"
 
 # Remote SSH to desktop
-alias ryzen='ssh -XY 2.154.25.247'
+alias ryzen='ssh -XY algepe@2.154.25.247'
 # Alias for usual commands
 alias tmus='tmux new-session -s'
 alias tmut='tmux attach -t'
@@ -35,6 +35,6 @@ alias vimf='vim -o `fzf`'
 alias fprev='fzf --preview "bat --style=numbers --color=always {}"'
 
 # Shorcuts
-alias workdir='cd ~/OmniSnippets_JS/AlStuff'
-alias omni='cd ~/OmniSnippets_JS'
+alias workdir='cd ~/OmniStuffs/Documentation/docs/c2c'
+alias omni='cd ~/OmniStuffs/Calculator/Universe'
 alias master='cd ~/Master'
