@@ -18,14 +18,14 @@ alias lc='ls -1'
 # Ala vim commands
 alias :x='exit'
 
-# Loading tensorflow (virtualenv CPU)
-alias tensorflow='source ~/venv/bin/activate'
-
 # Add my own custom commands
 export PATH=$PATH":$HOME/CustomOS/myBashCommands"
 
-# Remote SSH to desktop
-alias ryzen='ssh -XY algepe@2.154.25.247'
+# Remote controls
+alias varsovia='ssh alvaro@IP'
+alias rpi='ssh algepe@IP'
+alias wawaWake='etherwake -i eth0 MAC'
+
 # Alias for usual commands
 alias tmus='tmux new-session -s'
 alias tmut='tmux attach -t'
@@ -34,7 +34,7 @@ alias tmut='tmux attach -t'
 alias vimf='vim -o `fzf`'
 alias fprev='fzf --preview "bat --style=numbers --color=always {}"'
 
-# Shorcuts
-alias workdir='cd ~/OmniStuffs/Documentation/docs/c2c'
-alias omni='cd ~/OmniStuffs/Calculator/Universe'
-alias master='cd ~/Master'
+# Deprecated
+#alias workdir='cd ~/OmniStuffs/Documentation/docs/c2c'
+#alias omni='cd ~/OmniStuffs/Calculator/Universe'
+#alias master='cd ~/Master'
